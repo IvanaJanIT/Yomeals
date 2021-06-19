@@ -22,18 +22,19 @@ public NotificationSistemPage(WebDriver driver, JavascriptExecutor js) {
 //	čeka se da element //*[contains(@class, 'system_message')]
 //	za atribut style dobije vrednost  "display: none;"
 
+    //get notification message
 	public WebElement getMessage() {
 
 		return driver.findElement(By.xpath(
 				"//*[contains(@class, 'alert--success') or contains(@class, 'alert--danger')][contains(@style,'display: block')]"));
 	}
-
+    //get notification message text
 	public String getMessageText() {
 
 		return this.getMessage().getText();
 	}
-
-	public void waitMessageDisapear() {
+    //wait until message disappears
+	public void waitMessageDisappear() {
 
 		WebDriverWait wait = new WebDriverWait(driver, 10);
 		wait.until(ExpectedConditions.attributeToBe(By.xpath("//*[contains(@class, 'system_message')]"), "style",
