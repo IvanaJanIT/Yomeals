@@ -41,12 +41,13 @@ public class LoginPage extends BasicPage {
 
 		return driver.findElement(By.linkText("Password"));
 	}
-    //login
-    public void login(String email, String password) {
-    	this.getUsername().clear();
-    	this.getUsername().sendKeys(email);
-    	this.getPassword().clear();
-    	this.getPassword().sendKeys(password);
-    	this.getLoginBtn().click();
-    }
+
+	// login
+	public void login(String email, String password) {
+		this.getUsername().clear();
+		this.getUsername().sendKeys(email);
+		this.getPassword().clear();
+		this.getPassword().sendKeys(password);
+		this.getLoginBtn().click();
+	}
 }
