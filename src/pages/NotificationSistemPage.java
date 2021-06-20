@@ -9,31 +9,25 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class NotificationSistemPage extends BasicPage {
 
-
-public NotificationSistemPage(WebDriver driver, JavascriptExecutor js) {
+	public NotificationSistemPage(WebDriver driver, JavascriptExecutor js) {
 		super(driver, js);
 
 	}
 
-//	get metodu za element koji prikazuje poruku
-//	//*[contains(@class, 'alert--success') or contains(@class, 'alert--danger')][contains(@style,'display: block')]
-//	metodu koja vraća poruku koja se nalazi u obaveštenju
-//	metodu koja čeka da obaveštenje nestane
-//	čeka se da element //*[contains(@class, 'system_message')]
-//	za atribut style dobije vrednost  "display: none;"
-
-    //get notification message
+	// get notification message
 	public WebElement getMessage() {
 
 		return driver.findElement(By.xpath(
 				"//*[contains(@class, 'alert--success') or contains(@class, 'alert--danger')][contains(@style,'display: block')]"));
 	}
-    //get notification message text
+
+	// get notification message text
 	public String getMessageText() {
 
 		return this.getMessage().getText();
 	}
-    //wait until message disappears
+
+	// wait until message disappears
 	public void waitMessageDisappear() {
 
 		WebDriverWait wait = new WebDriverWait(driver, 10);

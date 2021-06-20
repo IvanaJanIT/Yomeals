@@ -11,11 +11,13 @@ public class CartSummaryPage extends BasicPage {
 		super(driver, js);
 	}
 
+	// get Clear All button
 	public WebElement getClearAll() {
 
 		return driver.findElement(By.linkText("Clear All"));
 	}
 
+	// clear all from Cart
 	public void clearAllFromCart() {
 
 		this.getClearAll().click();

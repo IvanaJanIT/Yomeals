@@ -4,7 +4,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class ProfilePage extends BasicPage {
 
@@ -72,23 +74,33 @@ public class ProfilePage extends BasicPage {
 	// get Save personal info button
 	public WebElement getSavePersonalInfo() {
 
-		return driver.findElement(By.xpath("//*[@name=\"frmProfileInfo\"]//input[@value=\"Save\"]"));
+		return driver.findElement(By.xpath("//form[@name=\"frmProfileInfo\"]//input[@value=\"Save\"]"));
 	}
 
 	// set personal information
-	public void setPersonalInfo(String fname, String lname, String email, String address, String phone, String zip,
-			String country, String state, String city) {
-
+	public void setPersonalInfo(String fname, String lname, String address, String phone, String zip,
+			String country, String state, String city) throws InterruptedException {
+		
+		this.getFirstName().clear();
 		this.getFirstName().sendKeys(fname);
+		this.getLastName().clear();
 		this.getLastName().sendKeys(lname);
-		this.getEmail().sendKeys(email);
+		//this.getEmail().clear();
+		//this.getEmail().sendKeys(email);
+		this.getAddress().clear();
 		this.getAddress().sendKeys(address);
+		this.getPhone().clear();
 		this.getPhone().sendKeys(phone);
+		this.getZip().clear();
 		this.getZip().sendKeys(zip);
+		
 		this.getCountry(country);
+		Thread.sleep(3000);
 		this.getState(state);
+		Thread.sleep(3000);
 		this.getCity(city);
-		this.getSavePersonalInfo().click();
+		Thread.sleep(3000);
+		this.getSavePersonalInfo().submit();
 	}
 
 	// get image upload link
