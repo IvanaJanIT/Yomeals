@@ -1,9 +1,15 @@
 package pages;
 
+//import java.awt.AWTException;
+//import java.awt.Robot;
+//import java.awt.event.KeyEvent;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -78,22 +84,22 @@ public class ProfilePage extends BasicPage {
 	}
 
 	// set personal information
-	public void setPersonalInfo(String fname, String lname, String address, String phone, String zip,
-			String country, String state, String city) throws InterruptedException {
-		
+	public void setPersonalInfo(String fname, String lname, String address, String phone, String zip, String country,
+			String state, String city) throws InterruptedException {
+
 		this.getFirstName().clear();
 		this.getFirstName().sendKeys(fname);
 		this.getLastName().clear();
 		this.getLastName().sendKeys(lname);
-		//this.getEmail().clear();
-		//this.getEmail().sendKeys(email);
+		// this.getEmail().clear();
+		// this.getEmail().sendKeys(email);
 		this.getAddress().clear();
 		this.getAddress().sendKeys(address);
 		this.getPhone().clear();
 		this.getPhone().sendKeys(phone);
 		this.getZip().clear();
 		this.getZip().sendKeys(zip);
-		
+
 		this.getCountry(country);
 		Thread.sleep(3000);
 		this.getState(state);
@@ -103,36 +109,63 @@ public class ProfilePage extends BasicPage {
 		this.getSavePersonalInfo().submit();
 	}
 
+	// get image
+	public WebElement getImg() {
+
+		return driver.findElement(By.xpath("//*[@class=\"avatar\"]/img"));
+	}
+
 	// get image upload link
 	public WebElement getUpload() {
 
-		return driver.findElement(By.xpath("//div[@class=\"hover-elemnts\"]/a[@class=\"upload uploadFile-Js\"]"));
-	}
-
-	// get image
-	public WebElement getImgInput() {
-
-		return driver.findElement(By.xpath("//input[@type=\"file\"]"));
+		return driver.findElement(By.xpath("//*[@class=\"hover-elemnts\"]/a"));
 	}
 
 	// get image remove link
 	public WebElement getRemove() {
 
-		return driver.findElement(By.xpath("//div[@class=\"hover-elemnts\"]/a[@class=\"remove\"]"));
+		return driver.findElement(By.xpath("//*[@class=\"hover-elemnts\"]/a[2]"));
 	}
 
-	// Upload iamge
-	public void imgUpload(String imgPath) {
+	// get image input
+	public WebElement getImgInput() {
 
-		js.executeScript("arguments[0].click()", this.getUpload());
+		return driver.findElement(By.xpath("//input[@type=\"file\"]"));
+	}
+
+	// Upload image
+	public void imgUpload(String imgPath) throws InterruptedException {
+
+		Actions act = new Actions(driver);
+		WebElement element = this.getImg();
+		act.moveToElement(element).build().perform();
+
+		WebElement upload = this.getUpload();
+		act.moveToElement(upload);
+		Thread.sleep(3000);
+		act.click().build().perform();
+		// js.executeScript("arguments[0].click()", upload);
 		this.getImgInput().sendKeys(imgPath);
+		Thread.sleep(300);
+
+//	     Robot robot = new Robot();
+//	     robot.keyPress(KeyEvent.VK_ESCAPE);
+//	     robot.keyRelease(KeyEvent.VK_ESCAPE);
 
 	}
 
 	// Remove image
-	public void imgRemove() {
+	public void imgRemove() throws InterruptedException {
 
-		js.executeScript("arguments[0].click()", this.getRemove());
+		Actions act = new Actions(driver);
+		WebElement element = this.getImg();
+		act.moveToElement(element).build().perform();
+
+		WebElement remove = this.getRemove();
+		act.moveToElement(remove);
+		Thread.sleep(3000);
+		act.click().build().perform();
+		// js.executeScript("arguments[0].click()", this.getRemove());
 	}
 
 }

@@ -27,6 +27,7 @@ public class NotificationSistemPage extends BasicPage {
 		return this.getMessage().getText();
 	}
 
+
 	// wait until message disappears
 	public void waitMessageDisappear() {
 

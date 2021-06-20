@@ -52,6 +52,7 @@ public abstract class BasicTest {
         loginPage=new LoginPage(driver, js);
         notificationSistemPage=new NotificationSistemPage(driver, js);
         authPage=new AuthPage(driver, js);
+        
 	}
 
 //	@AfterMethod
