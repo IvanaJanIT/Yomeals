@@ -23,12 +23,14 @@ import pages.LoginPage;
 import pages.MealPage;
 import pages.NotificationSistemPage;
 import pages.ProfilePage;
+import pages.SearchResultPage;
 
 
 public abstract class BasicTest {
 
 	protected WebDriver driver;
 	protected JavascriptExecutor js;
+	
 	protected ProfilePage profilePage;
 	protected LocationPopupPage locationPopupPage;
 	protected LoginPage loginPage;
@@ -36,6 +38,7 @@ public abstract class BasicTest {
 	protected AuthPage authPage;
 	protected MealPage mealPage;
     protected CartSummaryPage cartSummaryPage;
+    protected SearchResultPage searchResultPage;
     
 	protected String baseUrl="http://demo.yo-meals.com";
 	protected String email="customer@dummyid.com";
@@ -62,6 +65,7 @@ public abstract class BasicTest {
         authPage=new AuthPage(driver, js);
         mealPage=new MealPage(driver, js);
         cartSummaryPage=new CartSummaryPage(driver, js);
+        searchResultPage=new SearchResultPage(driver, js);
         }
 
 	@AfterMethod

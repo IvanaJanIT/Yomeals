@@ -146,19 +146,18 @@ public class ProfilePage extends BasicPage {
 		act.click().build().perform();
 		// js.executeScript("arguments[0].click()", upload);
 		this.getImgInput().sendKeys(imgPath);
-		
 
-//	     Robot robot = new Robot();
-//		 Thread.sleep(2000);
-//	     robot.keyPress(KeyEvent.VK_TAB);
-//	     Thread.sleep(2000);
-//	     robot.keyPress(KeyEvent.VK_TAB);
-//	     Thread.sleep(2000);
-//	     robot.keyPress(KeyEvent.VK_TAB);
-//	     Thread.sleep(2000);
-//	     robot.keyRelease(KeyEvent.VK_ENTER);
-//	     
-//	     Thread.sleep(2000);
+	     Robot robot = new Robot();
+		 Thread.sleep(2000);
+	     robot.keyPress(KeyEvent.VK_TAB);
+	     Thread.sleep(2000);
+	     robot.keyPress(KeyEvent.VK_TAB);
+	     Thread.sleep(2000);
+	     robot.keyPress(KeyEvent.VK_TAB);
+	     Thread.sleep(2000);
+	     robot.keyRelease(KeyEvent.VK_ENTER);
+	     
+	     Thread.sleep(2000);
 
 	}
 
