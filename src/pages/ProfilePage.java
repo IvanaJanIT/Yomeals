@@ -1,8 +1,8 @@
 package pages;
 
-//import java.awt.AWTException;
-//import java.awt.Robot;
-//import java.awt.event.KeyEvent;
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -134,7 +134,7 @@ public class ProfilePage extends BasicPage {
 	}
 
 	// Upload image
-	public void imgUpload(String imgPath) throws InterruptedException {
+	public void imgUpload(String imgPath) throws InterruptedException, AWTException {
 
 		Actions act = new Actions(driver);
 		WebElement element = this.getImg();
@@ -146,11 +146,19 @@ public class ProfilePage extends BasicPage {
 		act.click().build().perform();
 		// js.executeScript("arguments[0].click()", upload);
 		this.getImgInput().sendKeys(imgPath);
-		Thread.sleep(300);
+		
 
 //	     Robot robot = new Robot();
-//	     robot.keyPress(KeyEvent.VK_ESCAPE);
-//	     robot.keyRelease(KeyEvent.VK_ESCAPE);
+//		 Thread.sleep(2000);
+//	     robot.keyPress(KeyEvent.VK_TAB);
+//	     Thread.sleep(2000);
+//	     robot.keyPress(KeyEvent.VK_TAB);
+//	     Thread.sleep(2000);
+//	     robot.keyPress(KeyEvent.VK_TAB);
+//	     Thread.sleep(2000);
+//	     robot.keyRelease(KeyEvent.VK_ENTER);
+//	     
+//	     Thread.sleep(2000);
 
 	}
 
