@@ -28,7 +28,7 @@ public class ProfileTest extends BasicTest {
 				"Message 'Logout Successfull!' is not displayed");
 	}
 
-	@Test (priority = 1)
+	@Test(priority = 1)
 	public void changeProfileTest() throws InterruptedException, IOException, AWTException {
 
 		this.driver.get(baseUrl + "/guest-user/login-form");

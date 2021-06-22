@@ -29,7 +29,7 @@ public class SearchTest extends BasicTest {
 
 		XSSFWorkbook workbook = new XSSFWorkbook(fis);
 		XSSFSheet sheet = workbook.getSheet("Meal Search Results");
-		
+
 		SoftAssert softAssertion = new SoftAssert();
 
 		for (int i = 1; i < 7; i++) {
@@ -41,7 +41,7 @@ public class SearchTest extends BasicTest {
 			String location = sheet.getRow(i).getCell(0).getStringCellValue();
 			locationPopupPage.openLocationPopup();
 			locationPopupPage.setLocation(location);
-			
+
 			// softAssertion.assertTrue(notificationSistemPage.getMessageText().contains("Locality
 			// Setup Successfully"),
 			// "Message 'Locality Setup Successfully' is not displayed");

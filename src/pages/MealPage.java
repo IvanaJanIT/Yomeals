@@ -40,12 +40,12 @@ public class MealPage extends BasicPage {
 
 	// add product to Cart
 	public void addToCart(String quantity) {
-		
+
 		this.getProductQty().sendKeys(Keys.CONTROL + "a");
 		this.getProductQty().sendKeys(Keys.DELETE);
 		this.getProductQty().sendKeys(Keys.CONTROL + "a");
-		WebElement qty=this.getProductQty();
-		//this.getProductQty().sendKeys(quantity);
+		WebElement qty = this.getProductQty();
+		// this.getProductQty().sendKeys(quantity);
 		js.executeScript("arguments[0].value=arguments[1]", qty, quantity);
 		this.getAddCart().click();
 	}

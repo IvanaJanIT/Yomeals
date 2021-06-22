@@ -25,16 +25,16 @@ public class AuthPage extends BasicPage {
 
 	// get Logout dropdown
 	public WebElement getLogout() {
-		
+
 		return driver.findElement(By.xpath("//*[@class=\"my-account-dropdown\"]//li[2]/a"));
-	
+
 	}
 
 	// logout user
 	public void logOut() throws InterruptedException {
 
 		this.getAccountLink().click();
-		//js.executeScript("argument[0].click();",lo );
+		// js.executeScript("argument[0].click();",lo );
 		Thread.sleep(3000);
 		this.getLogout().click();
 	}

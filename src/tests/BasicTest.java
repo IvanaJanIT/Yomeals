@@ -25,25 +25,23 @@ import pages.NotificationSistemPage;
 import pages.ProfilePage;
 import pages.SearchResultPage;
 
-
 public abstract class BasicTest {
 
 	protected WebDriver driver;
 	protected JavascriptExecutor js;
-	
+
 	protected ProfilePage profilePage;
 	protected LocationPopupPage locationPopupPage;
 	protected LoginPage loginPage;
 	protected NotificationSistemPage notificationSistemPage;
 	protected AuthPage authPage;
 	protected MealPage mealPage;
-    protected CartSummaryPage cartSummaryPage;
-    protected SearchResultPage searchResultPage;
-    
-	protected String baseUrl="http://demo.yo-meals.com";
-	protected String email="customer@dummyid.com";
-	protected String password="12345678a";
-	
+	protected CartSummaryPage cartSummaryPage;
+	protected SearchResultPage searchResultPage;
+
+	protected String baseUrl = "http://demo.yo-meals.com";
+	protected String email = "customer@dummyid.com";
+	protected String password = "12345678a";
 
 	@BeforeMethod
 	public void setup() {
@@ -51,46 +49,45 @@ public abstract class BasicTest {
 		System.setProperty("webdriver.chrome.driver", "driver-lib/chromedriver");
 
 		driver = new ChromeDriver();
-        js= (JavascriptExecutor)driver;
-
+		js = (JavascriptExecutor) driver;
 
 		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-		driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		driver.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);
 
-        profilePage=new ProfilePage(driver, js);
-        locationPopupPage=new LocationPopupPage(driver, js);
-        loginPage=new LoginPage(driver, js);
-        notificationSistemPage=new NotificationSistemPage(driver, js);
-        authPage=new AuthPage(driver, js);
-        mealPage=new MealPage(driver, js);
-        cartSummaryPage=new CartSummaryPage(driver, js);
-        searchResultPage=new SearchResultPage(driver, js);
-        }
+		profilePage = new ProfilePage(driver, js);
+		locationPopupPage = new LocationPopupPage(driver, js);
+		loginPage = new LoginPage(driver, js);
+		notificationSistemPage = new NotificationSistemPage(driver, js);
+		authPage = new AuthPage(driver, js);
+		mealPage = new MealPage(driver, js);
+		cartSummaryPage = new CartSummaryPage(driver, js);
+		searchResultPage = new SearchResultPage(driver, js);
+	}
 
 	@AfterMethod
-		public void screenShotOnFailureAndClose(ITestResult result) throws InterruptedException, IOException{
-		
-			//using ITestResult.FAILURE is equals to result.getStatus then it enter into if condition
-				if(ITestResult.FAILURE==result.getStatus()){
-					//try{
-						
-						TakesScreenshot screenshot=(TakesScreenshot)driver;
-						File src=screenshot.getScreenshotAs(OutputType.FILE);
-	
-						LocalDateTime ldt = LocalDateTime.now();
-						DateTimeFormatter formatDateTime = DateTimeFormatter.ofPattern("yyyy-MM-dd-HH-mm-ss");
-						
-						FileUtils.copyFile(src, new File("./screenshots/"+ldt.format(formatDateTime)+".png"));
-						
-						System.out.println(ldt.format(formatDateTime));
-					//}catch (Exception e){
-						//System.out.println("Exception while taking screenshot "+e.getMessage());
-					//} 
-			}
-	    Thread.sleep(3000);
+	public void screenShotOnFailureAndClose(ITestResult result) throws InterruptedException, IOException {
+
+		// using ITestResult.FAILURE is equals to result.getStatus then it enter into if
+		// condition
+		if (ITestResult.FAILURE == result.getStatus()) {
+			// try{
+
+			TakesScreenshot screenshot = (TakesScreenshot) driver;
+			File src = screenshot.getScreenshotAs(OutputType.FILE);
+
+			LocalDateTime ldt = LocalDateTime.now();
+			DateTimeFormatter formatDateTime = DateTimeFormatter.ofPattern("yyyy-MM-dd-HH-mm-ss");
+
+			FileUtils.copyFile(src, new File("./screenshots/" + ldt.format(formatDateTime) + ".png"));
+
+			System.out.println(ldt.format(formatDateTime));
+			// }catch (Exception e){
+			// System.out.println("Exception while taking screenshot "+e.getMessage());
+			// }
+		}
+		Thread.sleep(3000);
 		this.driver.quit();
 	}
-	
-	
+
 }
